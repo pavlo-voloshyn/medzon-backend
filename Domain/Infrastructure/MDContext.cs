@@ -1,12 +1,8 @@
 ﻿using Domain.Entities;
+using Domain.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Infrastructure
 {
@@ -18,11 +14,17 @@ namespace Domain.Infrastructure
         public DbSet<Feedback> Feedbacks { get; set; }
         public DbSet<Speciality> Specialities { get; set; }
         public DbSet<Clinica> Clinicas { get; set; }
-
+        public DbSet<SpecialityClinica> SpecialityClinicas { get; set; }
 
         public MDContext(DbContextOptions<MDContext> options) : base(options)
         {
 
+        }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.Seed();
         }
     }
 }
