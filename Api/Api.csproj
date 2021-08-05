@@ -20,8 +20,6 @@
 
   <ItemGroup>
     <Folder Include="Constants\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Extensions\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
 
