@@ -8,6 +8,7 @@ using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Api.Extensions;
+using Microsoft.AspNetCore.Identity;
 
 namespace Api
 {
@@ -26,8 +27,11 @@ namespace Api
             services.AddControllers();
             services.AddDbContext<MDContext>(options =>
                  options.UseSqlServer(Configuration.GetConnectionString("MDDatabase")));
-
-           
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                .AddEntityFrameworkStores<MDContext>()
+                .AddDefaultTokenProviders();
+            services.ConfigureMapper();
+            services.ConfigureServices();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api", Version = "v1" });
