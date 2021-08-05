@@ -6,6 +6,7 @@ using Services.Constants;
 using Services.DTOs;
 using Services.Interfaces;
 using System;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Services
@@ -33,7 +34,16 @@ namespace Services
             patient.User = user;
 
             var resultAddingUser = await _userManager.CreateAsync(user, dto.Password);
-            if (!resultAddingUser.Succeeded) throw new Exception(AccountErrorMessages.FailedCreate);
+            if (!resultAddingUser.Succeeded)
+            {
+                StringBuilder errorMessage = new StringBuilder();
+                foreach(var exception in resultAddingUser.Errors)
+                {
+                    errorMessage.AppendLine(exception.Description + ";");
+                }
+
+                throw new ArgumentException(errorMessage.ToString());
+            } 
 
             var identityUser = await _userManager.FindByEmailAsync(user.Email);
             await _userManager.AddToRoleAsync(identityUser, "User");
