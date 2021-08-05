@@ -16,7 +16,7 @@ namespace Api.Mapper
                 .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email))
                 .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.Phone));
             CreateMap<FreshUserDTO, Patient>();
-
+            CreateMap<UserPassView, UserPassDTO>();
         }
     }
 }

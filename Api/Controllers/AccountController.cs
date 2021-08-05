@@ -1,5 +1,6 @@
 ﻿using Api.ViewModels;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Services.DTOs;
@@ -24,12 +25,22 @@ namespace Api.Controllers
             _mapper = mapper;
         }
 
-        [HttpPost()]
+        [HttpPost("logup")]
+        [AllowAnonymous]
         public async Task<IActionResult> LogUp(FreshUserView freshUser)
         {
             var userDTO = _mapper.Map<FreshUserDTO>(freshUser);
             await _accountService.LogUp(userDTO);
             return Ok();
+        }
+
+        [HttpPost("login")]
+        [AllowAnonymous]
+        public async Task<IActionResult> LogIn(UserPassView userPass)
+        {
+            var userPassDTO = _mapper.Map<UserPassDTO>(userPass);
+            var token = await _accountService.LogIn(userPassDTO);
+            return Ok(token);
         }
     }
 }
