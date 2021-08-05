@@ -22,6 +22,7 @@ namespace Domain.Entities
         [Range(0, 5)]
         public double Rate { get; set; }
         
+        public SpecialityClinica Speciality { get; set; }
         public List<Feedback> Feedbacks { get; set; }
         public List<Doctor> Doctors { get; set; }
     }

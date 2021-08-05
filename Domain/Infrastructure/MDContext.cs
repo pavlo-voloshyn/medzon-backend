@@ -18,7 +18,7 @@ namespace Domain.Infrastructure
         public DbSet<Feedback> Feedbacks { get; set; }
         public DbSet<Speciality> Specialities { get; set; }
         public DbSet<Clinica> Clinicas { get; set; }
-
+        public DbSet<SpecialityClinica> SpecialityClinicas { get; set; }
 
         public MDContext(DbContextOptions<MDContext> options) : base(options)
         {

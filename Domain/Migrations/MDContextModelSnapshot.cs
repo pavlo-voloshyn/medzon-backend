@@ -82,7 +82,12 @@ namespace Domain.Migrations
                     b.Property<double>("Rate")
                         .HasColumnType("float");
 
+                    b.Property<Guid?>("SpecialityId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("SpecialityId");
 
                     b.ToTable("Clinicas");
                 });
@@ -200,6 +205,21 @@ namespace Domain.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Specialities");
+                });
+
+            modelBuilder.Entity("Domain.Entities.SpecialityClinica", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("SpecialityClinicas");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -436,6 +456,15 @@ namespace Domain.Migrations
                     b.Navigation("Doctor");
 
                     b.Navigation("Patient");
+                });
+
+            modelBuilder.Entity("Domain.Entities.Clinica", b =>
+                {
+                    b.HasOne("Domain.Entities.SpecialityClinica", "Speciality")
+                        .WithMany()
+                        .HasForeignKey("SpecialityId");
+
+                    b.Navigation("Speciality");
                 });
 
             modelBuilder.Entity("Domain.Entities.Doctor", b =>

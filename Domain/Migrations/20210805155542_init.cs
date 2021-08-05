@@ -47,20 +47,6 @@ namespace Domain.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Clinicas",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
-                    Rate = table.Column<double>(type: "float", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Clinicas", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Specialities",
                 columns: table => new
                 {
@@ -70,6 +56,18 @@ namespace Domain.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Specialities", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SpecialityClinicas",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SpecialityClinicas", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -195,6 +193,27 @@ namespace Domain.Migrations
                         name: "FK_Patients_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Clinicas",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
+                    Rate = table.Column<double>(type: "float", nullable: false),
+                    SpecialityId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Clinicas", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Clinicas_SpecialityClinicas_SpecialityId",
+                        column: x => x.SpecialityId,
+                        principalTable: "SpecialityClinicas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -381,6 +400,11 @@ namespace Domain.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Clinicas_SpecialityId",
+                table: "Clinicas",
+                column: "SpecialityId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_DoctorPatient_PatientsId",
                 table: "DoctorPatient",
                 column: "PatientsId");
@@ -464,6 +488,9 @@ namespace Domain.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "SpecialityClinicas");
         }
     }
 }
