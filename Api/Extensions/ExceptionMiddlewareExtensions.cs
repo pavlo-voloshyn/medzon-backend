@@ -24,7 +24,7 @@ namespace Api.Extensions
                         HttpStatusCode statusCode;
                         var exception = contextFeature.Error;
 
-                        if (exception is ArgumentException)
+                        if (exception is ArgumentException || exception is FormatException)
                         {
                             statusCode = HttpStatusCode.BadRequest;
                         }

@@ -13,6 +13,7 @@ namespace Api.Extensions
         public static void ConfigureServices(this IServiceCollection services)
         {
             services.AddTransient<IAccountService, AccountService>();
+            services.AddTransient<IAppointmentService, AppointmentService>();
         }
     }
 }
