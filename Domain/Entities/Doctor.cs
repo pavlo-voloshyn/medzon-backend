@@ -10,14 +10,11 @@ namespace Domain.Entities
 {
     public class Doctor : UserBase
     {
-        [Required]
         [Range(0,5)]
         public double Rate { get; set; }
 
-        [Required]
         public Clinica Clinica { get; set; }
 
-        [Required]
         public Speciality Speciality { get; set; }
         public List<Feedback> Feedbacks { get; set; }
         public List<Patient> Patients { get; set; }

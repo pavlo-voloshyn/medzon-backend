@@ -24,6 +24,7 @@ namespace Domain.Infrastructure
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
             builder.Seed();
         }
     }

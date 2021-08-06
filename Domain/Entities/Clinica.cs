@@ -10,15 +10,12 @@ namespace Domain.Entities
 {
     public class Clinica : EntityBase
     {
-        [Required]
         [MaxLength(50)]
         public string Name { get; set; }
         
-        [Required]
         [MaxLength(200)]
         public string Address { get; set; }
 
-        [Required]
         [Range(0, 5)]
         public double Rate { get; set; }
         

@@ -10,14 +10,14 @@ namespace Domain.Entities
 {
     public class Appointment : EntityBase
     {
-        [Required]
         public DateTime Date { get; set; }
         
-        [Required]
         public Patient Patient { get; set; }
+        public Guid PatientId { get; set; }
         
-        [Required]
         public Doctor Doctor { get; set; }
+        public Guid DoctorId { get; set; }
         public Clinica Clinica { get; set; }
+        public Guid ClinicaId { get; set; }
     }
 }
