@@ -56,5 +56,37 @@ namespace Api.Controllers
             var result = await _adminService.GetDoctor(doctorId);
             return Ok(result);
         }
+
+        [HttpPost("clinica")]
+        public async Task<IActionResult> CreateClinica(FreshClinicaView view)
+        {
+            var dto = _mapper.Map<FreshClinicaDTO>(view);
+            await _adminService.AddClinica(dto);
+            return Ok();
+        }
+
+        [HttpDelete("clinica/{id}")]
+        public async Task<IActionResult> DeleteClinica(string id)
+        {
+            var clinicaId = Guid.Parse(id);
+            await _adminService.DeleteClinica(clinicaId);
+            return Ok();
+        }
+
+        [HttpPut("clinica")]
+        public async Task<IActionResult> UpdateClinica(UpdateClinicaView view)
+        {
+            var dto = _mapper.Map<UpdateClinicaDTO>(view);
+            await _adminService.UpdateClinica(dto);
+            return Ok();
+        }
+
+        [HttpGet("clinica/{id}")]
+        public async Task<IActionResult> GetClinica(string id)
+        {
+            var clinicaId = Guid.Parse(id);
+            var result = await _adminService.GetClinica(clinicaId);
+            return Ok(result);
+        }
     }
 }
