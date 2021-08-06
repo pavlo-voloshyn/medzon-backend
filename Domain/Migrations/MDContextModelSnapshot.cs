@@ -40,7 +40,7 @@ namespace Domain.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ClinicaId")
+                    b.Property<Guid>("ClinicaId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Date")
@@ -70,12 +70,10 @@ namespace Domain.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
@@ -98,15 +96,13 @@ namespace Domain.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("ClinicaId")
+                    b.Property<Guid?>("ClinicaId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Rate")
@@ -135,17 +131,16 @@ namespace Domain.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid?>("ClinicaId")
+                    b.Property<Guid>("ClinicaId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("DoctorId")
+                    b.Property<Guid>("DoctorId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("PatientId")
@@ -175,11 +170,9 @@ namespace Domain.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
@@ -199,7 +192,6 @@ namespace Domain.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -209,77 +201,77 @@ namespace Domain.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d14dcea4-4180-43bc-b0a2-1c2e67adf26b"),
+                            Id = new Guid("c9a5659f-602a-4689-930b-fb2f266c9968"),
                             Name = "Immunolog"
                         },
                         new
                         {
-                            Id = new Guid("44f3a5b6-8240-4bf9-bf24-84443ed8b5bc"),
+                            Id = new Guid("55711644-cf86-4f57-b9c2-4a7da328c9a3"),
                             Name = "Anesthesiolog"
                         },
                         new
                         {
-                            Id = new Guid("deb376b3-01b1-40e8-b4f0-841639a7a987"),
+                            Id = new Guid("c4780d59-69b7-48d8-b3ed-53895ff17320"),
                             Name = "Dermatolog"
                         },
                         new
                         {
-                            Id = new Guid("db23960f-d757-4773-a186-f70361d248fc"),
+                            Id = new Guid("5fc05326-ac4d-4107-bff7-97d30c2722cd"),
                             Name = "Diagnostic radiolog"
                         },
                         new
                         {
-                            Id = new Guid("e9698141-5a3b-48b3-8b08-d86fc1438c4c"),
+                            Id = new Guid("339cea7c-3036-45d8-ac9b-7bdbb1bb3fd8"),
                             Name = "Family doctor"
                         },
                         new
                         {
-                            Id = new Guid("8c8b22bc-0555-4708-8e97-550fc33c881e"),
+                            Id = new Guid("e7b2862b-518b-49eb-9ddf-55e7e78318dc"),
                             Name = "Neurolog"
                         },
                         new
                         {
-                            Id = new Guid("d293b74d-ad48-4e8b-9165-560ada51940d"),
+                            Id = new Guid("9db46b2f-9108-480f-ad05-53c172ea33fe"),
                             Name = "Gynecolog"
                         },
                         new
                         {
-                            Id = new Guid("09dde36b-58e8-4de2-9e21-69380e6ceecb"),
+                            Id = new Guid("b07124ee-bfd6-4bd9-994f-3d0ee68f6bc8"),
                             Name = "Ophthalmolog"
                         },
                         new
                         {
-                            Id = new Guid("3e89c063-07d7-4643-97b2-d34c8a86d3b6"),
+                            Id = new Guid("86a9621f-d4c6-482b-bf9a-a63dcecdf673"),
                             Name = "Patholog"
                         },
                         new
                         {
-                            Id = new Guid("b6101e9f-95f4-4468-9a5b-7eea17cd6aba"),
+                            Id = new Guid("17f1e957-824b-461c-8d48-b29183fcbc72"),
                             Name = "Pediatr"
                         },
                         new
                         {
-                            Id = new Guid("4f80e64c-0ddf-4c82-957e-7e1498ab6370"),
+                            Id = new Guid("4eac92e0-dc12-4177-ba93-a54ddfd739a8"),
                             Name = "Physical medic and rehabilitolog"
                         },
                         new
                         {
-                            Id = new Guid("8b3a7c39-a9b9-4043-a212-972d85dcece7"),
+                            Id = new Guid("d9cfc203-b687-4fa2-ac54-c7f7fd11b8f4"),
                             Name = "Preventive medicine"
                         },
                         new
                         {
-                            Id = new Guid("2aef29c8-5e21-46f3-b9b2-4c17f438232a"),
+                            Id = new Guid("ab847722-781b-42f2-91c2-3f6486bcee8b"),
                             Name = "Surger"
                         },
                         new
                         {
-                            Id = new Guid("d70809cb-2d47-4780-81e6-1110b0750654"),
+                            Id = new Guid("0356c3c3-cc45-4142-9636-705a6a530290"),
                             Name = "Oncolog"
                         },
                         new
                         {
-                            Id = new Guid("392b91e7-b5c5-4e8d-921c-0389ee3f6a25"),
+                            Id = new Guid("3ddc30f5-6b6d-4260-a13e-54219f86981c"),
                             Name = "Urolog"
                         });
                 });
@@ -291,7 +283,6 @@ namespace Domain.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -301,92 +292,92 @@ namespace Domain.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("2997c820-0758-4f58-b453-5498bfade3e8"),
+                            Id = new Guid("7bfed1f3-c680-47c9-ae15-a5b64c8555df"),
                             Name = "Allergy and immunology"
                         },
                         new
                         {
-                            Id = new Guid("f4d07169-0211-407a-81f9-79dae790d5e9"),
+                            Id = new Guid("669dd4f6-fe44-49ca-91e3-2999b1279d12"),
                             Name = "Anesthesiology"
                         },
                         new
                         {
-                            Id = new Guid("dcad1ba7-d182-4f0b-8792-3cc8e364db89"),
+                            Id = new Guid("3607ddf2-ff0f-41e4-81e8-eb6f32da56c3"),
                             Name = "Dermatology"
                         },
                         new
                         {
-                            Id = new Guid("00111c74-7be8-4287-9819-66f792184c98"),
+                            Id = new Guid("58bcff29-cf23-4e07-88cf-c2db2f3f41f8"),
                             Name = "Diagnostic radiology"
                         },
                         new
                         {
-                            Id = new Guid("13bb78b3-6f2b-4d3a-8269-fa480453aee8"),
+                            Id = new Guid("8fa36c3f-9d8e-4adf-9c50-e78a040d2044"),
                             Name = "Family medicine"
                         },
                         new
                         {
-                            Id = new Guid("49e2ed73-cccf-44b3-9307-1cda9bf3854a"),
+                            Id = new Guid("ef833957-bfa7-4383-89fc-e0fff9be66cc"),
                             Name = "Internal medicine"
                         },
                         new
                         {
-                            Id = new Guid("6bead483-9a2b-4689-b497-0163043fcf8c"),
+                            Id = new Guid("951f3081-db48-4e19-92f0-157a7218417f"),
                             Name = "Medical genetics"
                         },
                         new
                         {
-                            Id = new Guid("5658172e-56bb-4d5c-9950-e96bb6e481f1"),
+                            Id = new Guid("4dffa158-0557-4cde-bcff-5e4354a8c3a0"),
                             Name = "Neurology"
                         },
                         new
                         {
-                            Id = new Guid("b1c73b93-926d-4e56-be3e-c17077557460"),
+                            Id = new Guid("e1819a1e-73d9-48c5-8a5e-1bb9aebbbeef"),
                             Name = "Nuclear medicine"
                         },
                         new
                         {
-                            Id = new Guid("528e5bab-4a09-4173-a198-d16c3a6e16c7"),
+                            Id = new Guid("a6bc1c34-ab12-49fc-beb2-8dbae418798e"),
                             Name = "Obstetrics and gynecology"
                         },
                         new
                         {
-                            Id = new Guid("60f0c1f2-5f0d-46b0-9992-c855086c051c"),
+                            Id = new Guid("a2e0a582-4e6f-4cb8-aef9-56a276fe0cf6"),
                             Name = "Ophthalmology"
                         },
                         new
                         {
-                            Id = new Guid("8dabd3aa-093f-49f3-8e0d-ba3d152ddea4"),
+                            Id = new Guid("1887c4e6-08cf-44dc-96a7-a13187d39fc0"),
                             Name = "Pathology"
                         },
                         new
                         {
-                            Id = new Guid("020856dc-8b5d-4427-83d2-b2337738fd32"),
+                            Id = new Guid("ad48e01c-3b6b-43fb-b2fe-d8346cfc29bb"),
                             Name = "Pediatrics"
                         },
                         new
                         {
-                            Id = new Guid("40dea072-0acf-44bf-b909-17bf0a743114"),
+                            Id = new Guid("4dd18344-25e2-4dfa-8256-ba3d8f985643"),
                             Name = "Physical medicine and rehabilitation"
                         },
                         new
                         {
-                            Id = new Guid("e1d428ee-671c-4d17-8e80-19543af92b80"),
+                            Id = new Guid("20fd3853-3a71-4296-a739-09332575dedf"),
                             Name = "Preventive medicine"
                         },
                         new
                         {
-                            Id = new Guid("5aad5f0c-f826-4e56-b0d1-e617a4880b0f"),
+                            Id = new Guid("f8945d58-001a-44e8-b541-461e0c87060a"),
                             Name = "Surgery"
                         },
                         new
                         {
-                            Id = new Guid("d7f1c610-3bbb-49d6-b02e-d5772e01af25"),
+                            Id = new Guid("ca7b2bda-485b-4241-b073-9814261e328c"),
                             Name = "Radiation oncology"
                         },
                         new
                         {
-                            Id = new Guid("3e847ddd-aa22-43c8-97d7-28f3aeeb1f17"),
+                            Id = new Guid("68ebfcd2-97c0-4a7c-b571-df65073fa77d"),
                             Name = "Urology"
                         });
                 });
@@ -420,22 +411,22 @@ namespace Domain.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "840435fb-d1c7-4a9d-97ee-893d4f67be66",
-                            ConcurrencyStamp = "b793ec04-18e1-4559-866b-05949cf637a1",
+                            Id = "2013a22d-3de9-4bae-8f8f-aace8e2f707e",
+                            ConcurrencyStamp = "344f3c82-9b63-4f3f-b5cd-e8210c20e987",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "6bfac25f-ba7e-47a5-9b58-2f8c6a564f96",
-                            ConcurrencyStamp = "4a70605d-7157-427f-a5c1-6870cec4c636",
+                            Id = "76e4b000-7d94-40ed-956e-5436fa191bef",
+                            ConcurrencyStamp = "3f664d86-635c-44eb-b0a7-5b8bfa749b4a",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "5a81a99b-d3dc-4a00-ba9e-f8cfd69441a1",
-                            ConcurrencyStamp = "b6532cfb-6413-4f76-9ae1-02a4c8699929",
+                            Id = "947d147f-d306-48f3-8bbc-3a27f0f31946",
+                            ConcurrencyStamp = "507b3d1d-6165-41c3-a684-5e3a8e27f42f",
                             Name = "Doctor",
                             NormalizedName = "DOCTOR"
                         });
@@ -629,7 +620,9 @@ namespace Domain.Migrations
                 {
                     b.HasOne("Domain.Entities.Clinica", "Clinica")
                         .WithMany()
-                        .HasForeignKey("ClinicaId");
+                        .HasForeignKey("ClinicaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Domain.Entities.Doctor", "Doctor")
                         .WithMany("Appointments")
@@ -663,9 +656,7 @@ namespace Domain.Migrations
                 {
                     b.HasOne("Domain.Entities.Clinica", "Clinica")
                         .WithMany("Doctors")
-                        .HasForeignKey("ClinicaId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ClinicaId");
 
                     b.HasOne("Domain.Entities.Speciality", "Speciality")
                         .WithMany()
@@ -684,17 +675,25 @@ namespace Domain.Migrations
 
             modelBuilder.Entity("Domain.Entities.Feedback", b =>
                 {
-                    b.HasOne("Domain.Entities.Clinica", null)
+                    b.HasOne("Domain.Entities.Clinica", "Clinica")
                         .WithMany("Feedbacks")
-                        .HasForeignKey("ClinicaId");
+                        .HasForeignKey("ClinicaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("Domain.Entities.Doctor", null)
+                    b.HasOne("Domain.Entities.Doctor", "Doctor")
                         .WithMany("Feedbacks")
-                        .HasForeignKey("DoctorId");
+                        .HasForeignKey("DoctorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Domain.Entities.Patient", "Patient")
                         .WithMany()
                         .HasForeignKey("PatientId");
+
+                    b.Navigation("Clinica");
+
+                    b.Navigation("Doctor");
 
                     b.Navigation("Patient");
                 });

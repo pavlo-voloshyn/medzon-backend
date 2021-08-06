@@ -10,7 +10,6 @@ namespace Domain.Entities
 {
     public class Speciality : EntityBase
     {
-        [Required]
         public string Name { get; set; }
     }
 }

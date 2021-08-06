@@ -32,6 +32,18 @@ namespace Api.Mapper
                 .ForMember(dest => dest.Patient, opt => opt.MapFrom(src => src.Patient.Id.ToString()))
                 .ForMember(dest => dest.Doctor, opt => opt.MapFrom(src => src.Doctor.Id.ToString()))
                 .ForMember(dest => dest.Date, opt => opt.MapFrom(src => src.Date.ToString()));
+            CreateMap<FreshDoctorView, FreshDoctorDTO>()
+                .ForMember(dest => dest.ClinicaId, opt => opt.MapFrom(src => Guid.Parse(src.ClinicaId)))
+                .ForMember(dest => dest.SpecialityId, opt => opt.MapFrom(src => Guid.Parse(src.SpecialityId)));
+            CreateMap<FreshDoctorDTO, IdentityUser>()
+                .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.Phone))
+                .ForMember(dest => dest.UserName, opt => opt.MapFrom(src => src.Email))
+                .ForMember(dest => dest.PhoneNumber, opt => opt.MapFrom(src => src.Phone));
+            CreateMap<FreshDoctorDTO, Doctor>();
+            CreateMap<UpdateDoctorView, UpdateDoctorDTO>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => Guid.Parse(src.Id)))
+                .ForMember(dest => dest.ClinicaId, opt => opt.MapFrom(src => Guid.Parse(src.ClinicaId)))
+                .ForMember(dest => dest.SpecialityId, opt => opt.MapFrom(src => Guid.Parse(src.SpecialityId)));
         }
     }
 }

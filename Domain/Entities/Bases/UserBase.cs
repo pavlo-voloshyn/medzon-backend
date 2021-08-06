@@ -13,10 +13,8 @@ namespace Domain.Entities.Bases
     {
         public IdentityUser User { get; set; }
 
-        [Required]
         public string FirstName { get; set; }
 
-        [Required]
         public string LastName { get; set; }
     }
 }
