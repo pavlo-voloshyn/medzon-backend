@@ -44,6 +44,11 @@ namespace Api.Mapper
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => Guid.Parse(src.Id)))
                 .ForMember(dest => dest.ClinicaId, opt => opt.MapFrom(src => Guid.Parse(src.ClinicaId)))
                 .ForMember(dest => dest.SpecialityId, opt => opt.MapFrom(src => Guid.Parse(src.SpecialityId)));
+            CreateMap<FreshClinicaView, FreshClinicaDTO>()
+                 .ForMember(dest => dest.SpecialityId, opt => opt.MapFrom(src => Guid.Parse(src.SpecialityId)));
+            CreateMap<UpdateClinicaView, UpdateClinicaDTO>()
+                .ForMember(dest => dest.SpecialityId, opt => opt.MapFrom(src => Guid.Parse(src.SpecialityId)))
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => Guid.Parse(src.Id)));
         }
     }
 }

@@ -113,5 +113,65 @@ namespace Services
             _context.Remove(user);
             await _context.SaveChangesAsync();
         }
+
+        public async Task AddClinica(FreshClinicaDTO dto)
+        {
+            var speciality = await _context.SpecialityClinicas.FirstOrDefaultAsync(x => x.Id == dto.SpecialityId);
+            if (speciality == null) throw new ArgumentException(AdminErrorMessages.SpecialityNotFound);
+
+            var clinica = new Clinica()
+            {
+                Name = dto.Name,
+                Rate = dto.Rate,
+                Address = dto.Address,
+                Speciality = speciality
+            };
+
+            await _context.AddAsync(clinica);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteClinica(Guid id)
+        {
+            var clinica = _context.Clinicas.FirstOrDefault(x => x.Id == id);
+            if (clinica == null) throw new ArgumentException(AdminErrorMessages.ClinicaNotFound);
+
+            _context.Remove(clinica);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task UpdateClinica(UpdateClinicaDTO dto)
+        {
+            var clinica = _context.Clinicas.FirstOrDefault(x => x.Id == dto.Id);
+            if (clinica == null) throw new ArgumentException(AdminErrorMessages.ClinicaNotFound);
+
+            var speciality = await _context.SpecialityClinicas.FirstOrDefaultAsync(x => x.Id == dto.SpecialityId);
+            if (speciality == null) throw new ArgumentException(AdminErrorMessages.SpecialityNotFound);
+
+            clinica.Address = dto.Address;
+            clinica.Name = dto.Name;
+            clinica.Speciality = speciality;
+            clinica.Rate = dto.Rate;
+
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<UpdateClinicaDTO> GetClinica(Guid id)
+        {
+            var clinica = await _context.Clinicas.Include(c => c.Speciality).FirstOrDefaultAsync(x => x.Id ==  id);
+            if (clinica == null) throw new ArgumentException(AdminErrorMessages.ClinicaNotFound);
+
+            var result = new UpdateClinicaDTO()
+            {
+                Id = id,
+                Address = clinica.Address,
+                Name = clinica.Name,
+                Rate = clinica.Rate,
+                SpecialityId = clinica.Speciality.Id
+            };
+
+            return result;
+        }
+
     }
 }
