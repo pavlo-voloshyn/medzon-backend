@@ -15,6 +15,7 @@ namespace Domain.Infrastructure
         public DbSet<Speciality> Specialities { get; set; }
         public DbSet<Clinica> Clinicas { get; set; }
         public DbSet<SpecialityClinica> SpecialityClinicas { get; set; }
+        public DbSet<ClinicaFeedback> ClinicaFeedbacks { get; set; }
 
         public MDContext(DbContextOptions<MDContext> options) : base(options)
         {

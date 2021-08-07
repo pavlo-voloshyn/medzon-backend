@@ -8,6 +8,7 @@ namespace Services.DTOs
 {
     public class DoctorToFrontDTO
     {
+        public string Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public double Rate { get; set; }

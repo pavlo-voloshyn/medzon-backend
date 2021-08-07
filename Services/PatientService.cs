@@ -1,4 +1,5 @@
-﻿using Domain.Infrastructure;
+﻿using Domain.Entities;
+using Domain.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Services.Constants;
 using Services.DTOs;
@@ -58,6 +59,66 @@ namespace Services
             }
 
             return result;
+        }
+
+        public async Task AddFeedbackToDoctor(DoctorFeedbackDTO dto)
+        {
+            var patient = await _context.Patients.FirstOrDefaultAsync(x => x.Id == dto.PatientId);
+            if (patient == null) throw new ArgumentException(AdminErrorMessages.PatientNotFound);
+
+            var doctor = await _context.Doctors.FirstOrDefaultAsync(x => x.Id == dto.DoctorId);
+            if (doctor == null) throw new ArgumentException(AdminErrorMessages.DoctorNotFound);
+
+            var feedback = new Feedback()
+            {
+                Content = dto.Content,
+                Doctor = doctor,
+                Date = DateTime.UtcNow,
+                Patient = patient,
+                Stars = dto.Stars
+            };
+
+            await _context.AddAsync(feedback);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteFeedbackToDoctor(Guid id)
+        {
+            var feedback = _context.Feedbacks.FirstOrDefault(x => x.Id == id);
+            if (feedback == null) throw new ArgumentException(AdminErrorMessages.FeedbackNotFound);
+
+            _context.Remove(feedback);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task AddFeedbackToClinica(ClinicaFeedbackDTO dto)
+        {
+            var patient = await _context.Patients.FirstOrDefaultAsync(x => x.Id == dto.PatientId);
+            if (patient == null) throw new ArgumentException(AdminErrorMessages.PatientNotFound);
+
+            var clinica = await _context.Clinicas.FirstOrDefaultAsync(x => x.Id == dto.ClinicaId);
+            if (clinica == null) throw new ArgumentException(AdminErrorMessages.ClinicaNotFound);
+
+            var feedback = new ClinicaFeedback()
+            {
+                Content = dto.Content,
+                Clinica = clinica,
+                Date = DateTime.UtcNow,
+                Patient = patient,
+                Stars = dto.Stars
+            };
+
+            await _context.AddAsync(feedback);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteFeedbackToClinica(Guid id)
+        {
+            var feedback = _context.ClinicaFeedbacks.FirstOrDefault(x => x.Id == id);
+            if (feedback == null) throw new ArgumentException(AdminErrorMessages.FeedbackNotFound);
+
+            _context.Remove(feedback);
+            await _context.SaveChangesAsync();
         }
     }
 }
