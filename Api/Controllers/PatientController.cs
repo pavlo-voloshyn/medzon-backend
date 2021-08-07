@@ -17,11 +17,13 @@ namespace Api.Controllers
     public class PatientController : ControllerBase
     {
         private readonly IAppointmentService _appointmentService;
+        private readonly IPatientService _patientService;
         private readonly IMapper _mapper;
 
-        public PatientController(IAppointmentService appointmentService, IMapper mapper)
+        public PatientController(IAppointmentService appointmentService, IPatientService patientService, IMapper mapper)
         {
             _appointmentService = appointmentService;
+            _patientService = patientService;
             _mapper = mapper;
         }
 
@@ -46,6 +48,30 @@ namespace Api.Controllers
         {
             var guidId = Guid.Parse(id);
             var result = _appointmentService.GetPatientAppointments(guidId);
+            return Ok(result);
+        }
+
+        [HttpPost("favoritedoctor")]
+        public async Task<IActionResult> AddFavoriteDoctor(FavoriteDoctorView view)
+        {
+            var dto = _mapper.Map<FavoriteDoctorDTO>(view);
+            await _patientService.AddFavotireDoctor(dto);
+            return Ok();
+        }
+
+        [HttpDelete("favoritedoctor")]
+        public async Task<IActionResult> RemoveFavoriteDoctor(FavoriteDoctorView view)
+        {
+            var dto = _mapper.Map<FavoriteDoctorDTO>(view);
+            await _patientService.RemoveFavotireDoctor(dto);
+            return Ok();
+        }
+
+        [HttpGet("favoritedoctors")]
+        public async Task<IActionResult> GetFavoriteDoctors(string id)
+        {
+            var patientId = Guid.Parse(id);
+            var result = await _patientService.SeeFavoriteDoctors(patientId);
             return Ok(result);
         }
     }
