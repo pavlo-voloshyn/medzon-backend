@@ -32,12 +32,13 @@ namespace Services
             {
                 result.Add(new DoctorToFrontDTO()
                 {
+                    Id = doctor.Id.ToString(),
                     FirstName = doctor.FirstName,
                     LastName = doctor.LastName,
                     Clinica = doctor.Clinica.Id.ToString(),
                     Rate = doctor.Rate,
                     Speciality = doctor.Speciality.Id.ToString()
-                });
+                }); 
             }
 
             return result;

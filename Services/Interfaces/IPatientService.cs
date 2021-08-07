@@ -10,5 +10,9 @@ namespace Services.Interfaces
         Task AddFavotireDoctor(FavoriteDoctorDTO dto);
         Task RemoveFavotireDoctor(FavoriteDoctorDTO dto);
         Task<List<string>> SeeFavoriteDoctors(Guid id);
+        Task AddFeedbackToDoctor(DoctorFeedbackDTO dto);
+        Task DeleteFeedbackToDoctor(Guid id);
+        Task AddFeedbackToClinica(ClinicaFeedbackDTO dto);
+        Task DeleteFeedbackToClinica(Guid id);
     }
 }

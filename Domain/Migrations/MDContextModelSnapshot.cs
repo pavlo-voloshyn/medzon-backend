@@ -117,7 +117,7 @@ namespace Domain.Migrations
 
                     b.HasIndex("PatientId");
 
-                    b.ToTable("ClinicaFeedback");
+                    b.ToTable("ClinicaFeedbacks");
                 });
 
             modelBuilder.Entity("Domain.Entities.Doctor", b =>
@@ -226,77 +226,77 @@ namespace Domain.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("8f8b3d65-319f-4ea6-a1f0-257b98e62c7b"),
+                            Id = new Guid("db6a17cf-11c6-44c0-a345-b91803a22426"),
                             Name = "Immunolog"
                         },
                         new
                         {
-                            Id = new Guid("ae90c5b1-d614-4318-bf68-2abdb3978ff6"),
+                            Id = new Guid("de07ab2f-4c3f-4d5b-a54f-761d6f6e0fc0"),
                             Name = "Anesthesiolog"
                         },
                         new
                         {
-                            Id = new Guid("465d1bc2-0609-4278-a568-543091a63f59"),
+                            Id = new Guid("798f7046-393f-4037-a435-e25bdccece05"),
                             Name = "Dermatolog"
                         },
                         new
                         {
-                            Id = new Guid("0f1ee9da-867e-48aa-8c7c-92039fc03b9f"),
+                            Id = new Guid("34eac10a-fa12-4fd4-886a-d83f310d36ef"),
                             Name = "Diagnostic radiolog"
                         },
                         new
                         {
-                            Id = new Guid("23f10e6d-c12e-4c7d-8395-ef8abd7e8bd0"),
+                            Id = new Guid("d0fc08ef-0bb5-442d-b07a-6ec3c2565407"),
                             Name = "Family doctor"
                         },
                         new
                         {
-                            Id = new Guid("92c0bb68-8a54-40e6-b35e-8c5f4e470668"),
+                            Id = new Guid("7adda515-4fdb-4a02-b1d4-a2e7f93a1ce3"),
                             Name = "Neurolog"
                         },
                         new
                         {
-                            Id = new Guid("561ab4f9-3d66-48e4-b9dd-5e73383e7cd4"),
+                            Id = new Guid("0112bba0-c6e5-44e3-a4f9-ca401207e8bf"),
                             Name = "Gynecolog"
                         },
                         new
                         {
-                            Id = new Guid("a15b8c9d-85ad-41cf-a2f2-13b971115a61"),
+                            Id = new Guid("79f99e31-ecf2-4031-b974-059627ef2294"),
                             Name = "Ophthalmolog"
                         },
                         new
                         {
-                            Id = new Guid("fd74d4af-5d5f-46e0-8e3c-d3f171ce1b0f"),
+                            Id = new Guid("7c56a7d1-5540-4204-9c1e-b3867ba4e6ba"),
                             Name = "Patholog"
                         },
                         new
                         {
-                            Id = new Guid("29104884-8866-4efb-818f-a6cd92dc341f"),
+                            Id = new Guid("31872025-570d-422a-8ab9-9e853d786f52"),
                             Name = "Pediatr"
                         },
                         new
                         {
-                            Id = new Guid("f013944b-a480-4ac3-8c5f-5b130e81d7f4"),
+                            Id = new Guid("bf19faed-2190-4b54-afbb-8dd2664d789a"),
                             Name = "Physical medic and rehabilitolog"
                         },
                         new
                         {
-                            Id = new Guid("b9bf9513-8252-4309-ab01-ea7be87e0492"),
+                            Id = new Guid("e4c7587c-f591-4bcb-92b5-76a634c5239f"),
                             Name = "Preventive medicine"
                         },
                         new
                         {
-                            Id = new Guid("afe2a6aa-d40f-4b1e-9663-67b23ca52dab"),
+                            Id = new Guid("4679c573-259b-4eb7-a24f-1bbaf04f6991"),
                             Name = "Surger"
                         },
                         new
                         {
-                            Id = new Guid("4251404c-44eb-4a09-af52-4eee3281ce71"),
+                            Id = new Guid("7fb22bde-3522-4489-b4f1-d80f28e45e07"),
                             Name = "Oncolog"
                         },
                         new
                         {
-                            Id = new Guid("5cdaff3e-6d50-4477-a4a4-7a792e9ea100"),
+                            Id = new Guid("4b347dc7-5ca4-4597-af67-d7c71064f28c"),
                             Name = "Urolog"
                         });
                 });
@@ -317,92 +317,92 @@ namespace Domain.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("e76f8e9b-08a5-4fb4-a32a-6e4b8c26725c"),
+                            Id = new Guid("47f69c28-6038-4867-a331-7e44d2b73d3c"),
                             Name = "Allergy and immunology"
                         },
                         new
                         {
-                            Id = new Guid("321fa696-351b-433c-b7f9-8c2adb52c945"),
+                            Id = new Guid("e1e66ab1-b99b-44f0-abf4-5496b24e2e97"),
                             Name = "Anesthesiology"
                         },
                         new
                         {
-                            Id = new Guid("cc2615e7-8ff6-435f-84f4-8304f300d530"),
+                            Id = new Guid("f00b23ea-b6e9-43a1-8800-dff18747392b"),
                             Name = "Dermatology"
                         },
                         new
                         {
-                            Id = new Guid("eba9739f-8143-438a-a99c-ffb8192cf3b4"),
+                            Id = new Guid("63910226-21df-4b31-8179-e44ed154efab"),
                             Name = "Diagnostic radiology"
                         },
                         new
                         {
-                            Id = new Guid("27968e99-932c-4ca7-b702-7676a9166937"),
+                            Id = new Guid("b3d7503c-20e4-4e4f-bfcb-1cf193f58ed5"),
                             Name = "Family medicine"
                         },
                         new
                         {
-                            Id = new Guid("1628d694-f671-437e-bf34-08beb3b764c9"),
+                            Id = new Guid("fed198ac-f437-4e0e-a525-698d95cda93b"),
                             Name = "Internal medicine"
                         },
                         new
                         {
-                            Id = new Guid("b0eacd27-d74a-4894-95f6-b9b586c2a7d0"),
+                            Id = new Guid("e65ec4c9-0dad-4065-a9a9-0365e330c81d"),
                             Name = "Medical genetics"
                         },
                         new
                         {
-                            Id = new Guid("0aed4c2c-a376-4ea8-a4a4-234cd86ac559"),
+                            Id = new Guid("21bfe3d0-96f2-42b0-baf1-db7dc276bb44"),
                             Name = "Neurology"
                         },
                         new
                         {
-                            Id = new Guid("0a810c69-cf55-4f6b-92ce-cba3d67a0636"),
+                            Id = new Guid("1d7e76de-3415-474e-8620-9e32883ba3ce"),
                             Name = "Nuclear medicine"
                         },
                         new
                         {
-                            Id = new Guid("5e6e9103-a717-4d30-91dd-376cdb7bbb7f"),
+                            Id = new Guid("f4948d3a-cb5f-45bc-8407-5066d26b8674"),
                             Name = "Obstetrics and gynecology"
                         },
                         new
                         {
-                            Id = new Guid("1585bdab-c1f6-4660-8df0-034210acd8cf"),
+                            Id = new Guid("d3d04cfb-8316-4471-ae10-dc7c9742eaf1"),
                             Name = "Ophthalmology"
                         },
                         new
                         {
-                            Id = new Guid("2b2040de-932a-4b04-aefb-cee669cedadd"),
+                            Id = new Guid("7993477e-99b3-473e-91fc-68b8b74e03ef"),
                             Name = "Pathology"
                         },
                         new
                         {
-                            Id = new Guid("e8967044-8377-47fe-83fa-d974d63e74ae"),
+                            Id = new Guid("40b14fdb-d9dd-42f6-894d-4b33f5fb21fe"),
                             Name = "Pediatrics"
                         },
                         new
                         {
-                            Id = new Guid("501e0817-64cd-4b67-b9aa-ee47409f468b"),
+                            Id = new Guid("2675a298-5633-47f2-9d35-901bd0d1b1a9"),
                             Name = "Physical medicine and rehabilitation"
                         },
                         new
                         {
-                            Id = new Guid("fd558161-2057-44ae-a9f4-95b6f492bbd8"),
+                            Id = new Guid("d4aa52c5-4d25-44a3-827c-e5d65f1032ba"),
                             Name = "Preventive medicine"
                         },
                         new
                         {
-                            Id = new Guid("02ba65cc-2d0f-4918-bca8-7f3e1862f02b"),
+                            Id = new Guid("d9298c79-d10f-4f90-99c4-69e764f62355"),
                             Name = "Surgery"
                         },
                         new
                         {
-                            Id = new Guid("7ea7d269-261f-4d1b-b8fb-bfc74c96698d"),
+                            Id = new Guid("f4971bb8-9d1f-4af9-bd27-1f72f0fe7a75"),
                             Name = "Radiation oncology"
                         },
                         new
                         {
-                            Id = new Guid("2ca863d6-73a5-49cc-a798-009e0d81fc81"),
+                            Id = new Guid("b08efdea-200f-4bd4-b32e-74018a460137"),
                             Name = "Urology"
                         });
                 });
@@ -436,22 +436,22 @@ namespace Domain.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "08c0c880-4c21-4249-a724-9816a1d42f32",
-                            ConcurrencyStamp = "1b963781-3e91-4928-ab9a-de230b8b1ae6",
+                            Id = "011a5fe5-f7c2-4992-8b6b-85370ac7d89b",
+                            ConcurrencyStamp = "6f8d6292-9f8a-4e86-ac16-e6cfc0655d23",
                             Name = "User",
                             NormalizedName = "USER"
                         },
                         new
                         {
-                            Id = "7d3b3c9b-0ca4-4467-badb-9eebfce6bfe0",
-                            ConcurrencyStamp = "b0da093e-8b18-43f8-8e33-92f888fe3540",
+                            Id = "c81bcacc-23f5-4553-ae36-4c59d0205998",
+                            ConcurrencyStamp = "34ac531a-55b9-4dbf-a31b-1cc24a8676a9",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "e5133648-cf01-4f16-a145-f79026597a5d",
-                            ConcurrencyStamp = "28f0b6ef-4c62-4fb5-ac6d-30b4bd44bae9",
+                            Id = "cadae179-6aa4-4f79-a032-5d9bd9bca999",
+                            ConcurrencyStamp = "01fa4426-8a95-4b45-901a-501a9def97ab",
                             Name = "Doctor",
                             NormalizedName = "DOCTOR"
                         });

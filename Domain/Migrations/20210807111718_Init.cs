@@ -219,6 +219,34 @@ namespace Domain.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "ClinicaFeedbacks",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    PatientId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Stars = table.Column<int>(type: "int", nullable: false),
+                    ClinicaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ClinicaFeedbacks", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ClinicaFeedbacks_Clinicas_ClinicaId",
+                        column: x => x.ClinicaId,
+                        principalTable: "Clinicas",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_ClinicaFeedbacks_Patients_PatientId",
+                        column: x => x.PatientId,
+                        principalTable: "Patients",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Doctors",
                 columns: table => new
                 {
@@ -319,18 +347,11 @@ namespace Domain.Migrations
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Stars = table.Column<int>(type: "int", nullable: false),
-                    DoctorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ClinicaId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    DoctorId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Feedbacks", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Feedbacks_Clinicas_ClinicaId",
-                        column: x => x.ClinicaId,
-                        principalTable: "Clinicas",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Feedbacks_Doctors_DoctorId",
                         column: x => x.DoctorId,
@@ -350,9 +371,9 @@ namespace Domain.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "947d147f-d306-48f3-8bbc-3a27f0f31946", "507b3d1d-6165-41c3-a684-5e3a8e27f42f", "Doctor", "DOCTOR" },
-                    { "2013a22d-3de9-4bae-8f8f-aace8e2f707e", "344f3c82-9b63-4f3f-b5cd-e8210c20e987", "User", "USER" },
-                    { "76e4b000-7d94-40ed-956e-5436fa191bef", "3f664d86-635c-44eb-b0a7-5b8bfa749b4a", "Admin", "ADMIN" }
+                    { "cadae179-6aa4-4f79-a032-5d9bd9bca999", "01fa4426-8a95-4b45-901a-501a9def97ab", "Doctor", "DOCTOR" },
+                    { "011a5fe5-f7c2-4992-8b6b-85370ac7d89b", "6f8d6292-9f8a-4e86-ac16-e6cfc0655d23", "User", "USER" },
+                    { "c81bcacc-23f5-4553-ae36-4c59d0205998", "34ac531a-55b9-4dbf-a31b-1cc24a8676a9", "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
@@ -360,21 +381,21 @@ namespace Domain.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("3ddc30f5-6b6d-4260-a13e-54219f86981c"), "Urolog" },
-                    { new Guid("0356c3c3-cc45-4142-9636-705a6a530290"), "Oncolog" },
-                    { new Guid("ab847722-781b-42f2-91c2-3f6486bcee8b"), "Surger" },
-                    { new Guid("d9cfc203-b687-4fa2-ac54-c7f7fd11b8f4"), "Preventive medicine" },
-                    { new Guid("4eac92e0-dc12-4177-ba93-a54ddfd739a8"), "Physical medic and rehabilitolog" },
-                    { new Guid("17f1e957-824b-461c-8d48-b29183fcbc72"), "Pediatr" },
-                    { new Guid("c9a5659f-602a-4689-930b-fb2f266c9968"), "Immunolog" },
-                    { new Guid("b07124ee-bfd6-4bd9-994f-3d0ee68f6bc8"), "Ophthalmolog" },
-                    { new Guid("9db46b2f-9108-480f-ad05-53c172ea33fe"), "Gynecolog" },
-                    { new Guid("e7b2862b-518b-49eb-9ddf-55e7e78318dc"), "Neurolog" },
-                    { new Guid("339cea7c-3036-45d8-ac9b-7bdbb1bb3fd8"), "Family doctor" },
-                    { new Guid("5fc05326-ac4d-4107-bff7-97d30c2722cd"), "Diagnostic radiolog" },
-                    { new Guid("55711644-cf86-4f57-b9c2-4a7da328c9a3"), "Anesthesiolog" },
-                    { new Guid("c4780d59-69b7-48d8-b3ed-53895ff17320"), "Dermatolog" },
-                    { new Guid("86a9621f-d4c6-482b-bf9a-a63dcecdf673"), "Patholog" }
+                    { new Guid("4b347dc7-5ca4-4597-af67-d7c71064f28c"), "Urolog" },
+                    { new Guid("7fb22bde-3522-4489-b4f1-d80f28e45e07"), "Oncolog" },
+                    { new Guid("4679c573-259b-4eb7-a24f-1bbaf04f6991"), "Surger" },
+                    { new Guid("e4c7587c-f591-4bcb-92b5-76a634c5239f"), "Preventive medicine" },
+                    { new Guid("bf19faed-2190-4b54-afbb-8dd2664d789a"), "Physical medic and rehabilitolog" },
+                    { new Guid("31872025-570d-422a-8ab9-9e853d786f52"), "Pediatr" },
+                    { new Guid("db6a17cf-11c6-44c0-a345-b91803a22426"), "Immunolog" },
+                    { new Guid("79f99e31-ecf2-4031-b974-059627ef2294"), "Ophthalmolog" },
+                    { new Guid("0112bba0-c6e5-44e3-a4f9-ca401207e8bf"), "Gynecolog" },
+                    { new Guid("7adda515-4fdb-4a02-b1d4-a2e7f93a1ce3"), "Neurolog" },
+                    { new Guid("d0fc08ef-0bb5-442d-b07a-6ec3c2565407"), "Family doctor" },
+                    { new Guid("34eac10a-fa12-4fd4-886a-d83f310d36ef"), "Diagnostic radiolog" },
+                    { new Guid("de07ab2f-4c3f-4d5b-a54f-761d6f6e0fc0"), "Anesthesiolog" },
+                    { new Guid("798f7046-393f-4037-a435-e25bdccece05"), "Dermatolog" },
+                    { new Guid("7c56a7d1-5540-4204-9c1e-b3867ba4e6ba"), "Patholog" }
                 });
 
             migrationBuilder.InsertData(
@@ -382,24 +403,24 @@ namespace Domain.Migrations
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { new Guid("68ebfcd2-97c0-4a7c-b571-df65073fa77d"), "Urology" },
-                    { new Guid("ca7b2bda-485b-4241-b073-9814261e328c"), "Radiation oncology" },
-                    { new Guid("f8945d58-001a-44e8-b541-461e0c87060a"), "Surgery" },
-                    { new Guid("20fd3853-3a71-4296-a739-09332575dedf"), "Preventive medicine" },
-                    { new Guid("4dd18344-25e2-4dfa-8256-ba3d8f985643"), "Physical medicine and rehabilitation" },
-                    { new Guid("ad48e01c-3b6b-43fb-b2fe-d8346cfc29bb"), "Pediatrics" },
-                    { new Guid("1887c4e6-08cf-44dc-96a7-a13187d39fc0"), "Pathology" },
-                    { new Guid("4dffa158-0557-4cde-bcff-5e4354a8c3a0"), "Neurology" },
-                    { new Guid("a6bc1c34-ab12-49fc-beb2-8dbae418798e"), "Obstetrics and gynecology" },
-                    { new Guid("e1819a1e-73d9-48c5-8a5e-1bb9aebbbeef"), "Nuclear medicine" },
-                    { new Guid("951f3081-db48-4e19-92f0-157a7218417f"), "Medical genetics" },
-                    { new Guid("ef833957-bfa7-4383-89fc-e0fff9be66cc"), "Internal medicine" },
-                    { new Guid("8fa36c3f-9d8e-4adf-9c50-e78a040d2044"), "Family medicine" },
-                    { new Guid("58bcff29-cf23-4e07-88cf-c2db2f3f41f8"), "Diagnostic radiology" },
-                    { new Guid("669dd4f6-fe44-49ca-91e3-2999b1279d12"), "Anesthesiology" },
-                    { new Guid("7bfed1f3-c680-47c9-ae15-a5b64c8555df"), "Allergy and immunology" },
-                    { new Guid("a2e0a582-4e6f-4cb8-aef9-56a276fe0cf6"), "Ophthalmology" },
-                    { new Guid("3607ddf2-ff0f-41e4-81e8-eb6f32da56c3"), "Dermatology" }
+                    { new Guid("b08efdea-200f-4bd4-b32e-74018a460137"), "Urology" },
+                    { new Guid("f4971bb8-9d1f-4af9-bd27-1f72f0fe7a75"), "Radiation oncology" },
+                    { new Guid("d9298c79-d10f-4f90-99c4-69e764f62355"), "Surgery" },
+                    { new Guid("d4aa52c5-4d25-44a3-827c-e5d65f1032ba"), "Preventive medicine" },
+                    { new Guid("2675a298-5633-47f2-9d35-901bd0d1b1a9"), "Physical medicine and rehabilitation" },
+                    { new Guid("40b14fdb-d9dd-42f6-894d-4b33f5fb21fe"), "Pediatrics" },
+                    { new Guid("7993477e-99b3-473e-91fc-68b8b74e03ef"), "Pathology" },
+                    { new Guid("21bfe3d0-96f2-42b0-baf1-db7dc276bb44"), "Neurology" },
+                    { new Guid("f4948d3a-cb5f-45bc-8407-5066d26b8674"), "Obstetrics and gynecology" },
+                    { new Guid("1d7e76de-3415-474e-8620-9e32883ba3ce"), "Nuclear medicine" },
+                    { new Guid("e65ec4c9-0dad-4065-a9a9-0365e330c81d"), "Medical genetics" },
+                    { new Guid("fed198ac-f437-4e0e-a525-698d95cda93b"), "Internal medicine" },
+                    { new Guid("b3d7503c-20e4-4e4f-bfcb-1cf193f58ed5"), "Family medicine" },
+                    { new Guid("63910226-21df-4b31-8179-e44ed154efab"), "Diagnostic radiology" },
+                    { new Guid("e1e66ab1-b99b-44f0-abf4-5496b24e2e97"), "Anesthesiology" },
+                    { new Guid("47f69c28-6038-4867-a331-7e44d2b73d3c"), "Allergy and immunology" },
+                    { new Guid("d3d04cfb-8316-4471-ae10-dc7c9742eaf1"), "Ophthalmology" },
+                    { new Guid("f00b23ea-b6e9-43a1-8800-dff18747392b"), "Dermatology" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -457,6 +478,16 @@ namespace Domain.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_ClinicaFeedbacks_ClinicaId",
+                table: "ClinicaFeedbacks",
+                column: "ClinicaId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ClinicaFeedbacks_PatientId",
+                table: "ClinicaFeedbacks",
+                column: "PatientId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Clinicas_SpecialityId",
                 table: "Clinicas",
                 column: "SpecialityId");
@@ -480,11 +511,6 @@ namespace Domain.Migrations
                 name: "IX_Doctors_UserId",
                 table: "Doctors",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Feedbacks_ClinicaId",
-                table: "Feedbacks",
-                column: "ClinicaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Feedbacks_DoctorId",
@@ -521,6 +547,9 @@ namespace Domain.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "ClinicaFeedbacks");
 
             migrationBuilder.DropTable(
                 name: "DoctorPatient");

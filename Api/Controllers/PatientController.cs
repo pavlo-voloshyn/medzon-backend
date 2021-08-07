@@ -74,5 +74,38 @@ namespace Api.Controllers
             var result = await _patientService.SeeFavoriteDoctors(patientId);
             return Ok(result);
         }
+
+        [HttpPost("doctorfeedback")]
+        public async Task<IActionResult> AddDoctorFeedback(DoctorFeedbackView view)
+        {
+            var dto = _mapper.Map<DoctorFeedbackDTO>(view);
+            await _patientService.AddFeedbackToDoctor(dto);
+            return Ok();
+        }
+
+        [HttpDelete("doctorfeedback/{id}")]
+        public async Task<IActionResult> DeleteDoctorFeedback(string id)
+        {
+            var feedbackId = Guid.Parse(id);
+            await _patientService.DeleteFeedbackToDoctor(feedbackId);
+            return Ok();
+        }
+
+        [HttpPost("clinicafeedback")]
+        public async Task<IActionResult> AddClinicaFeedback(ClinicaFeedbackView view)
+        {
+            var dto = _mapper.Map<ClinicaFeedbackDTO>(view);
+            await _patientService.AddFeedbackToClinica(dto);
+            return Ok();
+        }
+
+        [HttpDelete("clinicafeedback/{id}")]
+        public async Task<IActionResult> DeleteClinicaFeedback(string id)
+        {
+            var feedbackId = Guid.Parse(id);
+            await _patientService.DeleteFeedbackToClinica(feedbackId);
+            return Ok();
+        }
+
     }
 }
