@@ -16,6 +16,7 @@ namespace Api.Extensions
             services.AddTransient<IAppointmentService, AppointmentService>();
             services.AddTransient<IAdminService, AdminService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IPatientService, PatientService>();
         }
     }
 }
